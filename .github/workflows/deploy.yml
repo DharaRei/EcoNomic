@@ -1,0 +1,56 @@
+name: CI/CD Pipeline - EcoNomic
+
+on:
+  push:
+    branches: [ "main", "staging" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    name: Build & Testes Automatizados
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v3
+
+      - name: Configurar Java 21
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Compilar e Executar Testes
+        run: mvn clean test
+
+  docker-build:
+    name: Build da Imagem Docker
+    needs: build-and-test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v3
+
+      - name: Build da Imagem Docker Local
+        run: docker build -t economic-api:latest .
+
+  deploy-staging:
+    name: Deploy em Staging
+    needs: docker-build
+    if: github.ref == 'refs/heads/staging'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Executar Deploy Staging
+        run: echo "Deploy da EcoNomic em ambiente de STAGING realizado com sucesso!"
+
+  deploy-production:
+    name: Deploy em Produção
+    needs: docker-build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Executar Deploy Produção
+        run: echo "Deploy da EcoNomic em ambiente de PRODUÇÃO realizado com sucesso!"

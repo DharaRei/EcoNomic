@@ -1,0 +1,37 @@
+networks:
+  economic-network:
+    driver: bridge
+
+volumes:
+  mongodb_data:
+
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: economic_mongodb
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: economic123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - economic-network
+
+  api:
+    build:
+      context: ./demo
+      dockerfile: ../Dockerfile
+    container_name: economic_api
+    restart: always
+    depends_on:
+      - mongodb
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://admin:economic123@mongodb:27017/economic_db?authSource=admin
+      SPRING_PROFILES_ACTIVE: prod
+    networks:
+      - economic-network
