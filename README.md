@@ -82,9 +82,9 @@ Persistência de Dados (MongoDB Compass):
 <img width="1900" height="1007" alt="image" src="https://github.com/user-attachments/assets/dd8cf6be-0b3a-48f5-aa54-8cab17e6473e" />
 
 
-Status do Pipeline (GitHub Actions): (Inserir print do status verde no GitHub)
+Status do Pipeline (GitHub Actions): 
+<img width="1897" height="771" alt="image" src="https://github.com/user-attachments/assets/8cca992b-31d7-428c-aba8-07a8383dff09" />
 
- ##📋 Checklist de Entrega
 
 ## 📋 Checklist de Entrega
 
