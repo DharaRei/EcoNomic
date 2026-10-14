@@ -36,8 +36,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Build da Imagem Docker Local
-        working-directory: ./demo
-        run: docker build -t economic-api:latest .
+        run: docker build -t economic-api:latest -f Dockerfile .
 
   deploy-staging:
     name: Deploy em Staging
