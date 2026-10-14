@@ -41,7 +41,8 @@ Siga os passos abaixo para subir a aplicação completa na sua máquina:
    ````
 4. Acessar e Testar a API:
 
-A aplicação rodará na porta 8080. Você pode disparar requisições utilizando o Insomnia (http://localhost:8080/api/...).
+A aplicação rodará na porta 8080. 
+Você pode disparar requisições utilizando o Insomnia (http://localhost:8080/api/...).
 
 ## 🏗️ Arquitetura da Aplicação
 
@@ -83,7 +84,9 @@ Persistência de Dados (MongoDB Compass):
 
 
 Status do Pipeline (GitHub Actions): 
-<img width="1897" height="771" alt="image" src="https://github.com/user-attachments/assets/8cca992b-31d7-428c-aba8-07a8383dff09" />
+<img width="1896" height="842" alt="image" src="https://github.com/user-attachments/assets/f482cecc-e4e9-4ad8-a9b4-75b50e33293c" />
+
+
 
 
 ## 📋 Checklist de Entrega
