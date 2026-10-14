@@ -23,17 +23,17 @@ services:
       - economic-network
 
   api:
-    build:
-      context: ./demo
-      dockerfile: ../Dockerfile
-    container_name: economic_api
-    restart: always
-    depends_on:
-      - mongodb
-    ports:
-      - "8080:8080"
-    environment:
-      SPRING_DATA_MONGODB_URI: mongodb://admin:economic123@mongodb:27017/economic_db?authSource=admin
-      SPRING_PROFILES_ACTIVE: prod
-    networks:
-      - economic-network
+      build:
+        context: .
+        dockerfile: Dockerfile
+      container_name: economic_api
+      restart: always
+      depends_on:
+        - mongodb
+      ports:
+        - "8080:8080"
+      environment:
+        SPRING_DATA_MONGODB_URI: mongodb://admin:economic123@mongodb:27017/economic_db?authSource=admin
+        SPRING_PROFILES_ACTIVE: prod
+      networks:
+        - economic-network
