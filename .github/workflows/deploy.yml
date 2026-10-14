@@ -26,18 +26,18 @@ jobs:
         working-directory: ./demo
         run: mvn clean test
 
-docker-build:
-  name: Build da Imagem Docker
-  needs: build-and-test
-  runs-on: ubuntu-latest
+  docker-build:
+    name: Build da Imagem Docker
+    needs: build-and-test
+    runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout do Código
-      uses: actions/checkout@v3
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v3
 
-    - name: Build da Imagem Docker Local
-      working-directory: ./demo
-      run: docker build -t economic-api:latest .
+      - name: Build da Imagem Docker Local
+        working-directory: ./demo
+        run: docker build -t economic-api:latest .
 
   deploy-staging:
     name: Deploy em Staging
